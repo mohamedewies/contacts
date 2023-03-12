@@ -9,5 +9,7 @@ RUN npm i
 
 COPY . .
 
-EXPOSE 3001
-CMD [ "node", "app.js" ]
+ENV NODE_ENV production
+ENV PORT 3001
+
+CMD ["npm", "start"]
