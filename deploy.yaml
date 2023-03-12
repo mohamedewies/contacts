@@ -1,19 +1,19 @@
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  name: openshift-nodejs-ewies
+  name: contacts
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: nodejs-app
+      app: contacts-nodejs-app
   template:
     metadata:
       labels:
-        app: nodejs-app
+        app: contacts-nodejs-app
     spec:
       containers:
-        - name: openshift-nodejs-ewies
+        - name: contacts
           image: nodejs-image:latest
           ports:
             - name: http
@@ -27,7 +27,7 @@ spec:
 kind: Service
 apiVersion: v1
 metadata:
-  name: openshift-nodejs-ewies-svc
+  name: contacts-nodejs-app-svc
 spec:
 ports:
   - name: http-3001
@@ -35,4 +35,4 @@ ports:
     protocol: TCP
     targetPort: 3001
 selector:
-  app: nodejs-app
+  app: contacts-nodejs-app
